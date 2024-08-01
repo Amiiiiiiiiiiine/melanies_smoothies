@@ -66,3 +66,6 @@ st.write("Existing Orders:")
 
 # Afficher le dataframe des commandes existantes
 st.dataframe(orders_df)
+
+cnx = st.connection("snowflake")
+session = cnx.session()
