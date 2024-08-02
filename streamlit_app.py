@@ -3,8 +3,8 @@ import pandas as pd
 #from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
-cnx = st.connection("snowflake")
-session = cnx.session()
+##cnx = st.connection("snowflake")
+##session = cnx.session()
 
 # Titre de l'application
 st.title("🥤Customize Your Smoothie🥤")
