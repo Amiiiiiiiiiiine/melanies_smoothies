@@ -3,15 +3,14 @@ import pandas as pd
 #from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
+cnx = st.connexion("snowflake")
+session = cnx.session()
+
 # Titre de l'application
 st.title("🥤Customize Your Smoothie🥤")
 
 # Description de l'application
 st.write("Choose the fruits you want in your custom Smoothie!")
-
-
-cnx = st.connexion("snowflake")
-session = cnx.session()
 
 # Récupérer les options de fruits depuis la base de données
 fruit_options_df = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME')).to_pandas()
