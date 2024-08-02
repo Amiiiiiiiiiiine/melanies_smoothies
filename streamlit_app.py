@@ -3,7 +3,7 @@ import pandas as pd
 #from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
-cnx = st.connexion("snowflake")
+cnx = st.connection("snowflake")
 session = cnx.session()
 
 # Titre de l'application
