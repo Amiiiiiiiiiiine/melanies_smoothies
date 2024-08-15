@@ -68,7 +68,7 @@ import requests
 
 if ingredients_list:
     ingredients_string = ''
-
+    
     for fruit_chosen in ingredients_list
         ingredients_string += fruit_chosen + ''
         fruityvice_response = requests.get("https://https://fruityvice.com/api/fruit/watermelon")
