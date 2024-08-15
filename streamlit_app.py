@@ -5,7 +5,6 @@ import requests
 #from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
-
 # Write directly to the app
 st.title("🍹Customize Your Smoothie🍹!")
 st.write(
@@ -28,7 +27,13 @@ session = cnx.session()
 # Affichage de la table fruit_options
 #session = get_active_session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
-st.dataframe(data=my_dataframe, use_container_width=True)
+#st.dataframe(data=my_dataframe, use_container_width=True)
+#st.stop()
+
+# Convert the Snowpark Dataframe 
+# to a Pandas Dataframe so we can use the LOC function
+pd_df = my_dataframe.to_pandas()
+st.dataframe(pd_df)
 st.stop()
 
 # Add multiselect 
@@ -57,14 +62,15 @@ if ingredients_list:
     """
     # Vérification de la requête
     st.write(my_insert_stmt)
-    
     time_to_insert = st.button('Submit Order')
 
     if time_to_insert :
         session.sql(my_insert_stmt).collect()
-
         st.success('Your Smoothie is ordered', icon = "✅")
 
+
+
+# Parti API requests
 if ingredients_list:
     ingredients_string = ''
     
