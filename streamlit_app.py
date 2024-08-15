@@ -21,6 +21,8 @@ st.write(
 name_on_order = st.text_input("Name on Smoothie :")
 st.write("The name on your Smoothie will be : ", name_on_order)
 
+cnx = st.connection("snowflake")
+session = cnx.session()
 # Affichage de la table fruit_options
 #session = get_active_session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
@@ -61,5 +63,4 @@ if ingredients_list:
         st.success('Your Smoothie is ordered', icon = "✅")
 
 
-cnx = st.connection("snowflake")
-session = cnx.session()
+
