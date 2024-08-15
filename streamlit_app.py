@@ -45,8 +45,8 @@ ingredients_list = st.multiselect(
 
 if ingredients_list:
     ingredients_string = ''
-    #st.write(ingredients_list)
-    #st.text(ingredients_list)
+    st.write(ingredients_list)
+    st.text(ingredients_list)
 
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
@@ -68,11 +68,10 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered', icon = "✅")
 
-
-
 # Parti API requests
 if ingredients_list:
     ingredients_string = ''
+
     
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
